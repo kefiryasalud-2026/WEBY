@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +10,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#be123c', // Granate vibrante
-                        secondary: '#fbbf24', // Dorado
-                        accent: '#fffbf2', // Crema suave
+                        primary: '#be123c',
+                        secondary: '#fbbf24',
+                        accent: '#fffbf2',
                         dark: '#4c0519'
                     }
                 }
@@ -26,7 +26,7 @@
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <!-- Se ha ajustado la ruta para asegurar compatibilidad -->
-                <img src="Logo Avicola Yamiless.png" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=Logo';" alt="Logo avicola" class="w-12 h-12 rounded-full border-2 border-primary object-cover">
+                <img src="Logo Avícola Yamiless.png" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=Logo';" alt="Logo Avícola Yamiless" class="w-12 h-12 rounded-full border-2 border-primary object-cover">
                 <span class="text-xl font-black text-dark tracking-tight">Avícola <span class="text-primary">Yamiless</span></span>
             </div>
             <a href="#contacto" class="bg-primary text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-rose-700 transition shadow-lg">Cotizar</a>
@@ -102,12 +102,10 @@
                 const msg = input.value;
                 const content = document.getElementById('chatContent');
                 
-                // User message
                 content.innerHTML += `<div class="bg-primary text-white p-3 rounded-2xl shadow-sm text-sm self-end ml-auto max-w-[80%]">${msg}</div>`;
                 input.value = '';
                 content.scrollTop = content.scrollHeight;
 
-                // Process logic
                 setTimeout(() => {
                     handleAIResponse(msg, content);
                 }, 800);
@@ -118,7 +116,6 @@
             let botMsg = "";
 
             if (step === 0) {
-                // Simplified NLP
                 if (msg.toLowerCase().includes('pechuga')) {
                     order.product = "Pechuga Especial";
                     order.price = 12.50;
@@ -141,7 +138,6 @@
                 botMsg = `¡Perfecto! Pedido de ${order.qty}kg de ${order.product} confirmado para ${order.method}. Total aproximado: S/ ${total}. ¿Confirmo tu pedido?`;
                 step = 2;
             } else {
-                // Aquí activamos el envío a WhatsApp
                 const total = (order.qty * order.price).toFixed(2);
                 const mensajeWhatsApp = `Hola, quiero realizar un pedido:
                 - Producto: ${order.product}
@@ -149,11 +145,9 @@
                 - Entrega: ${order.method}
                 - Total: S/ ${total}`;
                 
-                // Número configurado para recibir pedidos
                 const numeroWhatsApp = "51932307878"; 
                 const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeWhatsApp)}`;
                 
-                // Abrimos WhatsApp en una nueva pestaña
                 window.open(url, '_blank');
 
                 botMsg = "¡Pedido enviado por WhatsApp! Estamos coordinando el despacho. ¡Gracias!";
