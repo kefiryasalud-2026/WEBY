@@ -1,1 +1,776 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avícola Yamiless | Distribución y Carnes de Alta Gama</title>
+    
+    <!-- Tailwind CSS (URL Corregida) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (URLs Corregidas) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (URL Corregida) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#D32F2F',      // Rojo apetito y energía
+                        brandGold: '#FBC02D',     // Amarillo oro de calidad premium
+                        brandBrown: '#8D6E63',    // Marrón suave artesanal
+                        brandOlive: '#558B2F',    // Verde frescura natural
+                        brandGrayLight: '#FAFAFA',// Fondo sofisticado
+                        brandDark: '#121110',     // Negro carbón profundo
+                        accentOrange: '#FF7043',  
+                        accentSky: '#64B5F6'      
+                    },
+                    fontFamily: {
+                        cormorant: ['"Cormorant Garamond"', 'serif'],
+                        manrope: ['"Manrope"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FFFFFF;
+            color: #121110;
+        }
+        
+        .title-editorial {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Degradado editorial para evitar lo opaco */
+        .gourmet-gradient {
+            background: linear-gradient(135deg, #121110 0%, #211F1D 100%);
+        }
+
+        /* Líneas de lujo y bordes */
+        .gold-border-accent {
+            border-image: linear-gradient(to right, #FBC02D, #8D6E63) 1;
+        }
+
+        /* Textura sutil para dar riqueza visual al fondo */
+        .luxury-pattern {
+            background-image: radial-gradient(rgba(141, 110, 99, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Ocultar scrollbar de navegadores pero mantener funcionalidad */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animaciones fluidas */
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-subtle {
+            animation: subtle-bounce 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden antialiased luxury-pattern">
+
+    <!-- HEADER PREMIUM CON LOGO REAL -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/80 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+            
+            <!-- Logo Avícola Yamiless -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative w-14 h-14 rounded-full overflow-hidden border-2 border-brandGold bg-white flex items-center justify-center transition-transform duration-500 group-hover:scale-105 shadow-md">
+                    <img src="Logo Avícola Yamiless.png" alt="Logo Avícola Yamiless" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="block text-[9px] uppercase tracking-[0.3em] text-brandRed font-bold">Distribuidor Autorizado</span>
+                    <h1 class="title-editorial text-lg sm:text-2xl font-bold tracking-wide text-brandDark">
+                        Avícola <span class="text-brandRed italic font-normal">Yamiless</span>
+                    </h1>
+                </div>
+            </a>
+
+            <!-- Navegación Central Estilo Revista Gastronómica -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#productos" class="text-xs uppercase tracking-[0.2em] font-bold text-stone-700 hover:text-brandRed transition-colors duration-300">Nuestros Productos</a>
+                <a href="#productos" class="text-xs uppercase tracking-[0.2em] font-bold text-stone-700 hover:text-brandRed transition-colors duration-300">Venta Directa</a>
+            </nav>
+
+            <!-- Acción de Pedido -->
+            <div class="flex items-center gap-3">
+                <button onclick="openChatWithProduct('')" class="bg-brandRed hover:bg-brandRed/95 text-white px-5 py-2.5 rounded-sm text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 shadow-md shadow-brandRed/20">
+                    Pedir Ahora
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECCIÓN (Cinemática, Colorida y Vibrante) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 bg-stone-950 overflow-hidden">
+        
+        <!-- Video Cinematográfico de Fondo de Alta Calidad -->
+        <div class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/80 to-transparent z-10"></div>
+            <video class="w-full h-full object-cover scale-105 filter brightness-50 contrast-125" autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-a-fresh-chicken-close-up-40333-large.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-12 pb-16">
+            
+            <!-- Texto Hero de Alta Gama -->
+            <div class="lg:col-span-7 text-white space-y-6 text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-brandRed/90 rounded-full border border-brandGold/40 shadow-lg">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brandGold animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-[0.25em] font-bold text-white">Garantía de Salubridad Verificada</span>
+                </div>
+
+                <h2 class="title-editorial text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-none">
+                    El arte de la carne <br>
+                    <span class="text-brandGold italic font-semibold">fresca en su mesa</span>
+                </h2>
+
+                <p class="font-manrope text-sm sm:text-base font-light tracking-wide text-stone-300 max-w-xl leading-relaxed">
+                    No producimos de forma masiva; seleccionamos de manera exclusiva las mejores carnes blancas y rojas del país. Cada corte cumple con un riguroso estándar veterinario y es empacado al vacío para preservar una frescura insuperable.
+                </p>
+
+                <!-- Botonera Hero con Mayor Fuerza Visual -->
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button onclick="openChatWithProduct('')" class="px-8 py-4 bg-brandRed hover:bg-white hover:text-brandRed text-white text-xs uppercase tracking-[0.25em] font-bold transition-all duration-300 shadow-xl shadow-brandRed/30 border border-brandRed">
+                        Comenzar Compra Directa
+                    </button>
+                    <a href="#productos" class="px-8 py-4 border border-brandGold/80 text-brandGold hover:bg-brandGold hover:text-brandDark text-xs uppercase tracking-[0.25em] font-bold transition-all duration-300">
+                        Ver Catálogo
+                    </a>
+                </div>
+
+                <!-- Insignias de confianza en color vibrante -->
+                <div class="grid grid-cols-3 gap-4 pt-10 border-t border-white/10 max-w-lg">
+                    <div>
+                        <span class="block title-editorial text-2xl text-brandGold font-bold">100% Fresco</span>
+                        <span class="text-[9px] uppercase tracking-[0.15em] text-stone-400">Sin Congelantes</span>
+                    </div>
+                    <div class="border-x border-white/10 px-4">
+                        <span class="block title-editorial text-2xl text-brandGold font-bold">Pesado Exacto</span>
+                        <span class="text-[9px] uppercase tracking-[0.15em] text-stone-400">Garantía de Peso</span>
+                    </div>
+                    <div class="px-2">
+                        <span class="block title-editorial text-2xl text-brandGold font-bold">Delivery VIP</span>
+                        <span class="text-[9px] uppercase tracking-[0.15em] text-stone-400">Cadena de Frío</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Interactiva del Logo y Producto Hero -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative bg-gradient-to-b from-stone-900 to-stone-900/90 border border-brandGold/30 p-8 rounded-lg shadow-2xl max-w-sm w-full text-center">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-4 border-brandGold bg-white shadow-xl">
+                        <img src="Logo Avícola Yamiless.png" alt="Logo Avícola Yamiless" class="w-full h-full object-cover">
+                    </div>
+                    <span class="block text-[10px] uppercase tracking-[0.3em] text-brandGold font-bold mt-10">Producto Sugerido</span>
+                    <h3 class="title-editorial text-3xl font-light text-white mt-2">Pollo Entero Especial</h3>
+                    <p class="text-xs text-stone-400 font-light mt-3">
+                        Ideal para el horno familiar. Seleccionado a mano, libre de excesos de grasa y con niveles óptimos de jugosidad.
+                    </p>
+                    <div class="my-6 border-y border-white/5 py-4">
+                        <span class="text-stone-400 text-xs font-manrope">Precio Especial de Distribución</span>
+                        <div class="title-editorial text-4xl text-brandRed font-bold mt-1">S/. 10.00 <span class="text-lg text-white font-manrope">/ Kg</span></div>
+                    </div>
+                    <button onclick="openChatWithProduct('Pollo Entero')" class="w-full py-3 bg-brandGold hover:bg-brandRed text-brandDark hover:text-white text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300">
+                        Pedir este Corte
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VISTA EXCLUSIVA DE PRODUCTOS -->
+    <section id="productos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="max-w-3xl mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-brandRed font-bold block mb-2">Colección de Selección</span>
+                <h3 class="title-editorial text-4xl md:text-6xl font-light text-brandDark">
+                    Catálogo de Carnes Premium
+                </h3>
+                <p class="text-stone-500 text-sm mt-4 font-light max-w-xl">
+                    Explore las imágenes reales y detalladas de nuestras carnes. Presentaciones pulcritas listas para ser preparadas, con entrega directa bajo estricta cadena de frío.
+                </p>
+            </div>
+
+            <!-- Grilla Asimétrica Premium -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                
+                <!-- 1. Pollo Entero (Fresco y limpio, listo para sazonar) -->
+                <div class="md:col-span-8 bg-brandGrayLight border border-stone-200/60 p-6 flex flex-col justify-between group shadow-md hover:shadow-xl transition-all duration-300 rounded-sm">
+                    <div>
+                        <div class="overflow-hidden aspect-[16/10] bg-stone-900 relative mb-6">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=1200&q=80" alt="Pollo Entero Fresco y Crudo con Hierbas Aromáticas" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                            <span class="absolute top-4 left-4 z-20 px-3 py-1 bg-brandRed text-white text-[9px] uppercase tracking-[0.2em] font-semibold">Frescura Garantizada</span>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brandOlive font-bold">Distribución Exclusiva</span>
+                        <h4 class="title-editorial text-3xl font-light text-brandDark mt-2">Pollo Entero Especial</h4>
+                        <p class="text-stone-500 text-sm mt-2 font-light max-w-2xl">
+                            Eviscerado bajo riguroso cuidado higiénico, libre de plumajes y exceso de grasa. De carne sumamente tierna y consistencia ideal para el horneado tradicional o preparaciones gourmet complejas.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/60 pt-6 mt-8">
+                        <div>
+                            <span class="text-[9px] uppercase tracking-[0.2em] text-stone-400 block">Precio Estándar Distribuidor</span>
+                            <span class="title-editorial text-3xl font-bold text-brandRed">S/. 10.00 <span class="text-xs text-stone-500 font-manrope font-normal">/ Kg</span></span>
+                        </div>
+                        <button onclick="openChatWithProduct('Pollo Entero')" class="px-6 py-3 bg-brandDark hover:bg-brandRed text-white text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-300">
+                            Comprar Ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Cuy Selecto (Gourmet Tradicional - Presentación Rústica Premium) -->
+                <div class="md:col-span-4 bg-brandGrayLight border border-stone-200/60 p-6 flex flex-col justify-between group shadow-md hover:shadow-xl transition-all duration-300 rounded-sm">
+                    <div>
+                        <div class="overflow-hidden aspect-square bg-stone-900 relative mb-6">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Carne de Cuy tierna horneada tradicional con especias" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                            <span class="absolute top-4 left-4 z-20 px-3 py-1 bg-brandGold text-brandDark text-[9px] uppercase tracking-[0.2em] font-bold">Tradición Andina</span>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brandBrown font-bold">Especialidades</span>
+                        <h4 class="title-editorial text-3xl font-light text-brandDark mt-2">Cuy de Primera</h4>
+                        <p class="text-stone-500 text-xs mt-2 font-light leading-relaxed">
+                            Cuy seleccionado entero, perfectamente limpio y eviscerado con rigurosos estándares veterinarios. Empacado herméticamente para conservar toda su frescura y su carne suave de altísima digestibilidad.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/60 pt-6 mt-8">
+                        <div>
+                            <span class="text-[9px] uppercase tracking-[0.2em] text-stone-400 block">Costo Cerrado por Unidad</span>
+                            <span class="title-editorial text-3xl font-bold text-brandRed">S/. 50.00 <span class="text-xs text-stone-500 font-manrope font-normal">/ Und</span></span>
+                        </div>
+                        <button onclick="openChatWithProduct('Cuy')" class="px-5 py-3 bg-brandDark hover:bg-brandRed text-white text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-300">
+                            Pedir Cuy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Cortes Nobiliarios de Pollo (Pechugas y presas crudas y limpias) -->
+                <div class="md:col-span-5 bg-brandGrayLight border border-stone-200/60 p-6 flex flex-col justify-between group shadow-md hover:shadow-xl transition-all duration-300 rounded-sm">
+                    <div>
+                        <div class="overflow-hidden aspect-square bg-stone-900 relative mb-6">
+                            <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=800&q=80" alt="Filetes de pechuga de pollo cruda y limpia con condimentos" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                            <span class="absolute top-4 left-4 z-20 px-3 py-1 bg-brandOlive text-white text-[9px] uppercase tracking-[0.2em] font-bold">100% Magro</span>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brandBrown font-bold">Porciones Limpias</span>
+                        <h4 class="title-editorial text-3xl font-light text-brandDark mt-2">Cortes Porcionados</h4>
+                        <p class="text-stone-500 text-xs mt-2 font-light leading-relaxed">
+                            Pechugas perfiladas, piernas frescas, alas limpias y menudencias seleccionadas para una preparación rápida y libre de mermas en casa.
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-200/60 pt-6 mt-8 space-y-4">
+                        <div class="flex justify-between text-xs font-manrope border-b border-dashed border-stone-300 pb-2">
+                            <span class="text-stone-600 font-semibold">Pecho de Pollo Premium</span>
+                            <span class="font-bold text-brandRed">S/. 15.00 / Kg</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-manrope border-b border-dashed border-stone-300 pb-2">
+                            <span class="text-stone-600 font-semibold">Piernas Especiales</span>
+                            <span class="font-bold text-brandRed">S/. 12.00 / Kg</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-manrope border-b border-dashed border-stone-300 pb-2">
+                            <span class="text-stone-600 font-semibold">Alas Limpias</span>
+                            <span class="font-bold text-brandRed">S/. 12.00 / Kg</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-manrope border-b border-dashed border-stone-300 pb-2">
+                            <span class="text-stone-600 font-semibold">Menudencia Higienizada</span>
+                            <span class="font-bold text-brandRed">S/. 6.00 / Kg</span>
+                        </div>
+                        <button onclick="openChatWithProduct('Pollo')" class="w-full py-3 bg-brandRed hover:bg-brandDark text-white text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-300 mt-2">
+                            Elegir Corte de Pollo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. Pato Fino & Enrollado de Cerdo (Plato gourmet asado y perfectamente emplatado) -->
+                <div class="md:col-span-7 bg-brandGrayLight border border-stone-200/60 p-6 flex flex-col justify-between group shadow-md hover:shadow-xl transition-all duration-300 rounded-sm">
+                    <div>
+                        <div class="overflow-hidden aspect-[16/10] bg-stone-900 relative mb-6">
+                            <!-- Imagen corregida: Plato gourmet de pato asado y trinchado, listo para servir (comida real) -->
+                            <img src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=1200&q=80" alt="Plato gourmet de pato asado con salsa y guarnición de alta gama" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                            <span class="absolute top-4 left-4 z-20 px-3 py-1 bg-brandGold text-brandDark text-[9px] uppercase tracking-[0.2em] font-bold">Carnes Selectas</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-[0.2em] text-accentOrange font-bold">Línea de Pato</span>
+                                <h4 class="title-editorial text-2xl font-light text-brandDark mt-1">Pato Fino de Corral</h4>
+                                <p class="text-stone-500 text-xs mt-2 font-light leading-relaxed">
+                                    De carne roja magra, sumamente tierna y aromática, ideal para arroces y asados exigentes de alta gastronomía.
+                                </p>
+                                <span class="title-editorial text-2xl font-bold text-brandRed block mt-2">S/. 20.00 <span class="text-xs text-stone-500 font-manrope font-normal">/ Kg</span></span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-[0.2em] text-brandBrown font-bold">Especial Cerdo</span>
+                                <h4 class="title-editorial text-2xl font-light text-brandDark mt-1">Enrollado de Chancho</h4>
+                                <p class="text-stone-500 text-xs mt-2 font-light leading-relaxed">
+                                    Elaborado con cortes selectos de panceta y lomo fresco, sazonado con especias finas y atado artesanalmente para asar.
+                                </p>
+                                <span class="title-editorial text-2xl font-bold text-brandRed block mt-2">S/. 18.00 <span class="text-xs text-stone-500 font-manrope font-normal">/ Kg</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 border-t border-stone-200/60 pt-6 mt-8">
+                        <button onclick="openChatWithProduct('Pato')" class="flex-1 py-3 border border-brandDark hover:border-brandRed hover:text-brandRed text-brandDark text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-300">
+                            Pedir Pato Fino
+                        </button>
+                        <button onclick="openChatWithProduct('Chancho')" class="flex-1 py-3 bg-brandDark hover:bg-brandRed text-white text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-300">
+                            Pedir Enrollado
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LLAMADA A LA ACCIÓN (CTA) -->
+    <section class="py-24 bg-brandGrayLight border-y border-stone-200/80 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#d32f2f_1px,transparent_1px)] [background-size:24px_24px] opacity-5"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center space-y-6">
+            <span class="text-xs uppercase tracking-[0.3em] text-brandRed font-bold block">Conserjería Inmediata</span>
+            <h3 class="title-editorial text-4xl md:text-6xl font-light text-brandDark leading-tight">
+                Haga su pedido desde la comodidad de casa
+            </h3>
+            <p class="text-stone-500 text-sm md:text-base font-light leading-relaxed max-w-xl mx-auto">
+                No tiene que llamar por teléfono ni esperar en filas. Interactúe con <span class="font-semibold text-brandDark">"Yami-Chat"</span> para armar su pedido exacto y ser derivado de forma inmediata al WhatsApp de confirmación.
+            </p>
+            <div class="pt-4">
+                <button onclick="openChatWithProduct('')" class="px-10 py-5 bg-brandRed hover:bg-brandDark text-white text-xs uppercase tracking-[0.25em] font-bold transition-all duration-300 shadow-xl shadow-brandRed/20">
+                    Iniciar Conversación con Yami-Chat
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-brandDark text-stone-300 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-stone-800">
+            
+            <div class="md:col-span-6 space-y-6">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border border-brandGold bg-white flex items-center justify-center">
+                        <img src="Logo Avícola Yamiless.png" alt="Logo Avícola Yamiless" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="title-editorial text-xl font-bold tracking-wide text-white">
+                        Avícola <span class="text-brandRed italic font-normal">Yamiless</span>
+                    </h4>
+                </a>
+                <p class="text-xs text-stone-400 font-light leading-relaxed max-w-sm">
+                    Selección, distribución y ventas de carnes nobles con los más elevados controles de salubridad para la alta cocina familiar.
+                </p>
+                <div class="flex gap-4 text-stone-500">
+                    <a href="#" class="hover:text-brandGold transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-brandGold transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-brandGold transition-colors"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-4">
+                <h5 class="text-[10px] uppercase tracking-widest text-brandGold font-bold">Selección</h5>
+                <ul class="space-y-2 text-xs text-stone-400 font-light">
+                    <li><a href="#productos" class="hover:text-brandGold transition-colors">Pollo Entero Especial</a></li>
+                    <li><a href="#productos" class="hover:text-brandGold transition-colors">Cortes de Pollo</a></li>
+                    <li><a href="#productos" class="hover:text-brandGold transition-colors">Cuy Selecto</a></li>
+                    <li><a href="#productos" class="hover:text-brandGold transition-colors">Pato de Corral</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-3 space-y-4">
+                <h5 class="text-[10px] uppercase tracking-widest text-brandGold font-bold">Despacho Oficial</h5>
+                <p class="text-xs text-stone-400 font-light leading-relaxed">
+                    Soporte telefónico y despacho inmediato de lunes a domingo.
+                </p>
+                <p class="text-xs font-semibold text-brandGold">
+                    Contacto: +51 947 332 462
+                </p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-wider text-stone-500">
+            <span>&copy; 2026 Avícola Yamiless. Todos los derechos reservados.</span>
+            <span>Estilo de Alta Gama & Curaduría Gastronómica</span>
+        </div>
+    </footer>
+
+
+    <!-- WIDGET DEL CONSERJE INTELIGENTE: YAMI-CHAT -->
+    <div id="yami-chat-widget" class="fixed bottom-6 right-6 z-50 font-manrope">
+        
+        <!-- Botón de Apertura de Chat -->
+        <button id="chat-trigger" onclick="toggleChat()" class="flex items-center gap-3 bg-brandDark hover:bg-brandRed text-white px-5 py-4 rounded-full shadow-2xl border border-brandGold/30 transition-all duration-300 group">
+            <span class="relative flex h-3.5 w-3.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brandGold opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-brandGold"></span>
+            </span>
+            <span class="text-[10px] uppercase tracking-[0.25em] font-bold text-stone-100 group-hover:text-white">Yami-Chat</span>
+            <i data-lucide="message-square" class="w-4 h-4 text-brandGold group-hover:rotate-6 transition-transform"></i>
+        </button>
+
+        <!-- Ventana Conversacional Completa -->
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[360px] md:w-[400px] h-[550px] bg-white rounded-lg shadow-2xl border border-stone-200 flex flex-col overflow-hidden transition-all duration-300">
+            
+            <!-- Cabecera de la ventana de chat -->
+            <div class="bg-brandDark p-4 flex items-center justify-between border-b border-brandGold/30">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-full overflow-hidden bg-white border border-brandGold">
+                        <img src="Logo Avícola Yamiless.png" alt="Logo Avícola Yamiless" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest text-white font-bold">Conserjería Yamiless</h4>
+                        <span class="text-[9px] text-brandGold font-light block">Asistente de Pedidos Activo</span>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-stone-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Cuerpo del Chat / Mensajes Dinámicos -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-stone-50 space-y-3 scroll-smooth no-scrollbar">
+                <!-- Se inyectan con JavaScript -->
+            </div>
+
+            <!-- Panel de Botones de Opción -->
+            <div id="chat-options-panel" class="p-3 bg-white border-t border-stone-100 flex flex-col gap-2">
+                <!-- Se inyectan dinámicamente -->
+            </div>
+
+            <!-- Entrada de Texto de Cantidades (Solo numérica) -->
+            <div id="chat-input-panel" class="hidden p-3 bg-white border-t border-stone-100 items-center gap-2">
+                <input type="number" id="quantity-input" min="1" placeholder="Ej. 3" class="flex-1 px-3 py-2 border border-stone-200 text-xs focus:outline-none focus:ring-1 focus:ring-brandRed" />
+                <button onclick="submitQuantity()" class="px-4 py-2 bg-brandRed hover:bg-brandDark text-white text-[10px] uppercase tracking-wider font-bold transition-all">
+                    Confirmar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- LÓGICA JAVASCRIPT DEL CHAT YAMI-CHAT -->
+    <script>
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
+
+        // Elementos de la interfaz del Chat
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatOptionsPanel = document.getElementById('chat-options-panel');
+        const chatInputPanel = document.getElementById('chat-input-panel');
+        const quantityInput = document.getElementById('quantity-input');
+
+        // Estado interno de la orden actual del usuario
+        let orderState = {
+            product: '',       // pollo, cuy, pato, chancho
+            subproduct: '',    // entero, piernas, pecho, ala, menudencia
+            price: 0,
+            quantity: 0,
+            deliveryType: '',  // delivery, recojo
+            step: 'init'       // init, select_subproduct, select_quantity, select_delivery, final
+        };
+
+        // Precios Oficiales Solicitados por el Cliente
+        const prices = {
+            pollo: {
+                entero: 10,
+                piernas: 12,
+                pecho: 15,
+                ala: 12, 
+                menudencia: 6
+            },
+            cuy: 50,
+            pato: 20,
+            chancho: 18
+        };
+
+        // Abrir y cerrar la ventana de chat
+        function toggleChat() {
+            if (chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.remove('hidden');
+                if (chatMessages.children.length === 0) {
+                    startChat();
+                }
+            } else {
+                chatWindow.classList.add('hidden');
+            }
+        }
+
+        // Abre el chat directamente con un producto ya preseleccionado
+        function openChatWithProduct(prodName) {
+            chatWindow.classList.remove('hidden');
+            chatMessages.innerHTML = '';
+            startChat();
+            if (prodName) {
+                setTimeout(() => {
+                    handleChoice(prodName);
+                }, 400);
+            }
+        }
+
+        // Iniciar el flujo de mensajes
+        function startChat() {
+            orderState = {
+                product: '',
+                subproduct: '',
+                price: 0,
+                quantity: 0,
+                deliveryType: '',
+                step: 'init'
+            };
+
+            addBotMessage("Bienvenido a la <strong>Conserjería de Venta Directa</strong> de Avícola Yamiless.");
+            addBotMessage("Seleccionamos y distribuimos proteínas de altísima gama directo a su hogar.");
+            addBotMessage("Por favor, elija el tipo de carne premium que desea ordenar hoy:");
+            
+            showOptions([
+                { text: "🐔 Pollo Fresco Selecto", value: "Pollo" },
+                { text: "🐹 Cuy de Primera", value: "Cuy" },
+                { text: "🦆 Pato Fino de Corral", value: "Pato" },
+                { text: "🐖 Enrollado de Chancho", value: "Chancho" }
+            ]);
+        }
+
+        // Agregar mensaje del bot en la burbuja elegante
+        function addBotMessage(htmlContent) {
+            const container = document.createElement('div');
+            container.className = "flex items-start gap-2.5 max-w-[85%] animate-fade-in";
+            
+            container.innerHTML = `
+                <div class="w-7 h-7 rounded-full overflow-hidden border border-brandGold flex-shrink-0 bg-white">
+                    <img src="Logo Avícola Yamiless.png" alt="Yamiless Logo" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white border border-stone-200 p-3 text-xs text-stone-700 leading-relaxed rounded-r-lg rounded-bl-lg shadow-sm">
+                    ${htmlContent}
+                </div>
+            `;
+            chatMessages.appendChild(container);
+            scrollToBottom();
+        }
+
+        // Agregar mensaje del usuario
+        function addUserMessage(textContent) {
+            const container = document.createElement('div');
+            container.className = "flex items-end justify-end gap-2.5 max-w-[85%] ml-auto animate-fade-in";
+            
+            container.innerHTML = `
+                <div class="bg-brandRed text-white p-3 text-xs leading-relaxed rounded-l-lg rounded-tr-lg shadow-sm">
+                    ${textContent}
+                </div>
+            `;
+            chatMessages.appendChild(container);
+            scrollToBottom();
+        }
+
+        // Mostrar opciones de botones interactivos
+        function showOptions(options) {
+            chatOptionsPanel.innerHTML = '';
+            chatOptionsPanel.classList.remove('hidden');
+            chatInputPanel.classList.add('hidden');
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full py-2.5 px-4 text-stone-700 hover:text-white bg-stone-50 hover:bg-brandDark border border-stone-200 hover:border-brandDark text-xs text-left font-manrope uppercase tracking-wider font-semibold transition-all duration-300";
+                btn.innerHTML = opt.text;
+                btn.onclick = () => handleChoice(opt.value);
+                chatOptionsPanel.appendChild(btn);
+            });
+        }
+
+        // Desplazamiento automático al fondo del chat
+        function scrollToBottom() {
+            setTimeout(() => {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 50);
+        }
+
+        // Manejar las decisiones del usuario según el flujo del prompt
+        function handleChoice(val) {
+            addUserMessage(val);
+
+            // Flujo Inicial
+            if (orderState.step === 'init') {
+                if (val === 'Pollo') {
+                    orderState.product = 'pollo';
+                    orderState.step = 'select_subproduct';
+                    addBotMessage("Ha elegido nuestra línea de pollo de primera. Indique la presentación o corte que prefiere:");
+                    showOptions([
+                        { text: "Pollo Entero (S/. 10.00 / Kg)", value: "Pollo Entero" },
+                        { text: "Piernas Seleccionadas (S/. 12.00 / Kg)", value: "Piernas" },
+                        { text: "Pecho Limpio (S/. 15.00 / Kg)", value: "Pecho" },
+                        { text: "Ala Limpia (S/. 12.00 / Kg)", value: "Ala" },
+                        { text: "Menudencia Higienizada (S/. 6.00 / Kg)", value: "Menudencia" }
+                    ]);
+                } else if (val === 'Cuy') {
+                    orderState.product = 'cuy';
+                    orderState.price = prices.cuy;
+                    orderState.step = 'select_quantity';
+                    addBotMessage("Seleccionó Cuy Gourmet de Primera. El precio por unidad es de <strong>S/. 50.00</strong>.");
+                    addBotMessage("Ingrese el número de unidades que requiere para su pedido:");
+                    showQuantityInput("Unidades de Cuy (Ej. 2)");
+                } else if (val === 'Pato') {
+                    orderState.product = 'pato';
+                    orderState.price = prices.pato;
+                    orderState.step = 'select_quantity';
+                    addBotMessage("Seleccionó Pato Fino de Corral. El precio por kilo es de <strong>S/. 20.00</strong>.");
+                    addBotMessage("Ingrese el número de kilos que requiere:");
+                    showQuantityInput("Kilos de Pato (Ej. 4)");
+                } else if (val === 'Chancho') {
+                    orderState.product = 'chancho';
+                    orderState.price = prices.chancho;
+                    orderState.step = 'select_quantity';
+                    addBotMessage("Seleccionó nuestro Enrollado de Chancho Premium. El precio por kilo es de <strong>S/. 18.00</strong>.");
+                    addBotMessage("Ingrese el número de kilos que requiere:");
+                    showQuantityInput("Kilos de Enrollado (Ej. 3)");
+                }
+                return;
+            }
+
+            // Subproducto de Pollo y ruteo de sus precios correctos
+            if (orderState.step === 'select_subproduct') {
+                if (val === 'Pollo Entero') {
+                    orderState.subproduct = 'entero';
+                    orderState.price = prices.pollo.entero;
+                } else if (val === 'Piernas') {
+                    orderState.subproduct = 'piernas';
+                    orderState.price = prices.pollo.piernas;
+                } else if (val === 'Pecho') {
+                    orderState.subproduct = 'pecho';
+                    orderState.price = prices.pollo.pecho;
+                } else if (val === 'Ala') {
+                    orderState.subproduct = 'ala';
+                    orderState.price = prices.pollo.ala;
+                } else if (val === 'Menudencia') {
+                    orderState.subproduct = 'menudencia';
+                    orderState.price = prices.pollo.menudencia;
+                }
+
+                orderState.step = 'select_quantity';
+                addBotMessage(`El costo de este corte es de <strong>S/. ${orderState.price}.00 por kilo</strong>.`);
+                addBotMessage("Indique cuántos kilos desea solicitar para este pedido:");
+                showQuantityInput("Kilos de Pollo (Ej. 5)");
+                return;
+            }
+
+            // Elección del método de entrega (Delivery o Recojo)
+            if (orderState.step === 'select_delivery') {
+                if (val === 'Delivery') {
+                    orderState.deliveryType = 'Delivery a Domicilio';
+                } else {
+                    orderState.deliveryType = 'Recojo en la Tienda (Avícola Yamiless)';
+                }
+
+                orderState.step = 'final';
+                
+                // Cálculo total del pedido
+                const total = orderState.price * orderState.quantity;
+                const unidadTexto = (orderState.product === 'cuy') ? 'unidades' : 'kilos';
+
+                addBotMessage(`Perfecto. Hemos registrado su orden de alta gama: <br><br><strong>Resumen de Solicitud:</strong><br>• Producto: ${getFriendlyName()}<br>• Cantidad: ${orderState.quantity} ${unidadTexto}<br>• Precio Unitario: S/. ${orderState.price}.00<br>• Monto Total Estimado: <strong>S/. ${total}.00</strong><br>• Tipo de Entrega: ${orderState.deliveryType}`);
+                addBotMessage("¿Desea enviar y validar estos datos directamente con el dueño por WhatsApp?");
+                
+                showOptions([
+                    { text: "✅ Confirmar y Enviar por WhatsApp", value: "Confirmar Pedido" },
+                    { text: "❌ Recomenzar Pedido", value: "Reiniciar" }
+                ]);
+                return;
+            }
+
+            // Redirección o Cancelación Final
+            if (orderState.step === 'final') {
+                if (val === "Confirmar Pedido") {
+                    sendToWhatsApp();
+                } else {
+                    addBotMessage("Se ha reseteado el pedido con seguridad.");
+                    startChat();
+                }
+            }
+        }
+
+        // Mostrar interfaz de entrada de números para la cantidad
+        function showQuantityInput(placeholder) {
+            chatOptionsPanel.classList.add('hidden');
+            chatInputPanel.classList.remove('hidden');
+            quantityInput.placeholder = placeholder;
+            quantityInput.value = '';
+            quantityInput.focus();
+        }
+
+        // Validar y enviar la cantidad ingresada
+        function submitQuantity() {
+            const val = parseInt(quantityInput.value);
+            if (!val || val <= 0) {
+                return;
+            }
+
+            addUserMessage(`${val} solicitados`);
+            orderState.quantity = val;
+            orderState.step = 'select_delivery';
+
+            addBotMessage("Indique cómo desea recibir su pedido para coordinar el despacho seguro:");
+            showOptions([
+                { text: "🛵 Solicitar Envío a Casa", value: "Delivery" },
+                { text: "🏪 Recoger en Tienda Física", value: "Recojo" }
+            ]);
+        }
+
+        // Nombre del producto para mensajes formateados
+        function getFriendlyName() {
+            if (orderState.product === 'pollo') {
+                return `Pollo (Corte: ${orderState.subproduct.toUpperCase()})`;
+            }
+            return orderState.product.toUpperCase();
+        }
+
+        // Construir URL dinámico de WhatsApp y redirigir
+        function sendToWhatsApp() {
+            const numWhatsApp = '947332462';
+            const total = orderState.price * orderState.quantity;
+            const unidadTexto = (orderState.product === 'cuy') ? 'unidades' : 'kilos';
+            
+            const textPayload = 
+`Hola, acabo de realizar un pedido de alta gama desde su Landing Page Oficial:
+
+🔸 Producto: ${getFriendlyName()}
+🔸 Cantidad: ${orderState.quantity} ${unidadTexto}
+🔸 Precio Unitario: S/. ${orderState.price}.00
+🔸 Monto Total Estimado: S/. ${total}.00
+🔸 Entrega: ${orderState.deliveryType}
+
+Por favor, confirmar disponibilidad y la hora del despacho bajo estándares de salubridad. ¡Muchas gracias!`;
+
+            const encodedText = encodeURIComponent(textPayload);
+            const finalURL = `https://wa.me/${numWhatsApp}?text=${encodedText}`;
+            
+            // Abrir WhatsApp en pestaña nueva
+            window.open(finalURL, '_blank');
+            
+            addBotMessage("¡Su pedido se ha enviado con éxito al WhatsApp de la administración (947332462)!");
+            
+            // Volver a iniciar el chat para futuras compras
+            setTimeout(() => {
+                startChat();
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
